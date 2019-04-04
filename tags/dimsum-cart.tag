@@ -1,7 +1,7 @@
 <dimsum-cart>
 <center>
     <!--start of sweet and savoury buttons tag-->
-    <h2>Num Sweet: { numSweet }</h2>
+    <h2>Sweet Votes: { numSweet } | Savoiury  Votes: { numSavoury }</h2>
     <button onclick={ showSweet }>I &#10084; Sweet </button>
     <button onclick={ showSavoury }>I &#10084; Savoury</button>
     <!--start of sweet and savoury buttons tag-->
@@ -21,7 +21,7 @@
     this.numSweet = 0;
     this.numSavoury = 0;
 
-//start of sweet
+//start of sweet data vote pushes
     showSweet(event) {
       observable.trigger('sweet');
       var key = sweetRef.push().key;
@@ -33,6 +33,7 @@
       sweetRef.push(msg);
     }
 
+//start of savoury data vote pushes
     showSavoury(event) {
       observable.trigger('savoury');
       var key = savouryRef.push().key;
@@ -44,12 +45,17 @@
       savouryRef.push(msg);
     }
 
+ //start of vote countes for sweet
     sweetRef.on('value', function(snapshot_of_sweet_votes){
         that.numSweet = snapshot_of_sweet_votes.numChildren();
         that.update();
     });
 
-
+ //start of vote countes for sweet
+savouryRef.on('value', function(snapshot_of_savoury_votes){
+     that.numSavoury = snapshot_of_savoury_votes.numChildren();
+     that.update();
+ });
   </script>
   <!--scripts end-->
 <br>
