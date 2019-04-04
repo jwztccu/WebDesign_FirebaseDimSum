@@ -44,8 +44,8 @@
       savouryRef.push(msg);
     }
 
-    sweetRef.on('value', function(snap){
-        that.numSweet++;
+    sweetRef.on('value', function(snapshot_of_sweet_votes){
+        that.numSweet = snapshot_of_sweet_votes.numChildren();
         that.update();
     });
 
