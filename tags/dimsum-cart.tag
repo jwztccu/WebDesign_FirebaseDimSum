@@ -1,7 +1,9 @@
 <dimsum-cart>
 <center>
     <!--start of sweet and savoury buttons tag-->
-    <h2>Sweet Votes: { numSweet } | Savoiury  Votes: { numSavoury }</h2>
+<font face=arial size=5 color="purple">
+    <h2>Sweet Votes: { numSweet } | Savoury  Votes: { numSavoury }</h2>
+  </font>
     <button onclick={ showSweet }>I &#10084; Sweet </button>
     <button onclick={ showSavoury }>I &#10084; Savoury</button>
     <!--start of sweet and savoury buttons tag-->
