@@ -18,8 +18,8 @@
 
     var sweetRef = rootRef.child('/sweet_votes');
     var savouryRef = rootRef.child('/savoury_votes');
-    var numSweet = 0;
-    var numSavoury = 0;
+    this.numSweet = 0;
+    this.numSavoury = 0;
 
 //start of sweet
     showSweet(event) {
@@ -45,7 +45,7 @@
     }
 
     sweetRef.on('value', function(snap){
-        numSweet++;
+        that.numSweet++;
         that.update();
     }
 
