@@ -1,6 +1,7 @@
 <dimsum-cart>
 <center>
     <!--start of sweet and savoury buttons tag-->
+    <h2>Num Sweet: { numSweet }</h2>
     <button onclick={ showSweet }>I &#10084; Sweet </button>
     <button onclick={ showSavoury }>I &#10084; Savoury</button>
     <!--start of sweet and savoury buttons tag-->
@@ -15,30 +16,39 @@
 //find me the child in rootRef (that was dfined in index) and
 //look at the top of root ref for dim_sum_flavors
 
-    var dimSumFlavorsRef = rootRef.child('/dim_sum_flavors');
+    var sweetRef = rootRef.child('/sweet_votes');
+    var savouryRef = rootRef.child('/savoury_votes');
+    var numSweet = 0;
+    var numSavoury = 0;
 
 //start of sweet
     showSweet(event) {
       observable.trigger('sweet');
-      var key = dimSumFlavorsRef.push().key;
+      var key = sweetRef.push().key;
 			console.log(key);
       var msg = {
 				dimSumSelection: 'Sweet'
 			};
 
-      dimSumFlavorsRef.push(msg);
+      sweetRef.push(msg);
     }
 
     showSavoury(event) {
       observable.trigger('savoury');
-      var key = dimSumFlavorsRef.push().key;
+      var key = savouryRef.push().key;
 			console.log(key);
       var msg = {
 				dimSumSelection: 'savoury'
 			};
 
-      dimSumFlavorsRef.push(msg);
+      savouryRef.push(msg);
     }
+
+    sweetRef.on('value', function(snap){
+        numSweet++;
+        that.update();
+    }
+
 
   </script>
   <!--scripts end-->
