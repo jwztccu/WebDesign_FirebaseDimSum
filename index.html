@@ -23,8 +23,22 @@
 	<script src="tags/dimsum-noodleroll.tag" type="riot/tag"></script>
 
 	<script src="https://cdn.jsdelivr.net/riot/3.1/riot+compiler.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
 	<script>
+	   // Initialize Firebase
+     var config = {
+      	apiKey: "AIzaSyBEbOWvV5Fig3eNvWVWValUExl-_WBBxEo",
+	      authDomain: "mstu5013.firebaseapp.com",
+	      databaseURL: "https://mstu5013.firebaseio.com",
+	      projectId: "mstu5013",
+	      storageBucket: "mstu5013.appspot.com",
+	      messagingSenderId: "953045445181"
+    };
+    firebase.initializeApp(config);
+    // Firebase Cached References
+    var database = firebase.database();
+    var rootRef = database.ref('/');
 		//step1: Making the observable object accessible to all tags here.
 		var observable = riot.observable();
 
