@@ -47,7 +47,7 @@
     sweetRef.on('value', function(snap){
         that.numSweet++;
         that.update();
-    }
+    });
 
 
   </script>
